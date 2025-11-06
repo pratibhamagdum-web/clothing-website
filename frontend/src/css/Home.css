@@ -1,0 +1,146 @@
+/* ✅ General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* =============================
+   🌟 FEATURED PRODUCT BOXES
+============================= */
+.featured-product-caption {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-top: 10px;
+  font-style:italic;
+  font-size: larger;
+  font-weight: bolder;
+  color: #0f0f0f;
+
+  /* Fancy box background */
+  background: linear-gradient(135deg, #fff9f9, #ffeaea);
+  border: 2px solid #ffb6c1;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+
+  /* Slight animation effect */
+  transition: all 0.4s ease;
+}
+
+.featured-product-caption:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(255, 105, 180, 0.5);
+}
+
+/* =============================
+   ☁ CLOUD GALLERY STYLES
+============================= */
+.image-grid {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  padding: 50px 0;
+}
+
+.grid-item {
+  width: 300px;
+  text-align: center;
+}
+
+.cloud-shape {
+  width: 300px;
+  height: 80vh;
+  overflow: hidden;
+  clip-path: polygon(
+    30% 0%, 70% 0%, 85% 15%, 100% 35%, 90% 70%, 70% 90%, 
+    50% 100%, 30% 90%, 10% 70%, 0% 40%, 15% 15%
+  );
+  border: 4px solid #ebdbdb;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cloud-shape:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.cloud-shape img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cloud-shape:hover img {
+  transform: scale(1.1);
+}
+
+/* =============================
+   📝 GALLERY CAPTION BOX
+============================= */
+.gallery-caption {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  color: #0f0f0f;
+  font-style: italic;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+/* ✅ Make section headings centered */
+.section-heading {
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: #222;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 auto 20px;   /* Center horizontally */
+  text-align: center;
+  display: block;        /* Important for margin auto */
+  width: fit-content;    /* Shrink to text width */
+  position: relative;
+}
+
+/* ✅ Gradient underline */
+.section-heading::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  display: block;
+  margin: 10px auto 0;   /* Center underline */
+  border-radius: 2px;
+}
+.section-heading {
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: #222;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 auto 20px;
+  text-align: center;
+  display: block;
+  width: fit-content;
+  position: relative;
+}
+
+.section-heading::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}

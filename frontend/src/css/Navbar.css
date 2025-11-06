@@ -1,0 +1,44 @@
+/* Navbar background */
+.custom-navbar {
+  background-color: #fa8787; 
+  height: 12vh;
+}
+
+/* Nav link hover underline animation */
+.nav-links .nav-link {
+  position: relative;
+  color: white;
+  font-weight:600;
+  font-size: larger;
+  transition: color 0.3s ease;
+}
+
+.nav-links .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px; /* small gap from text */
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-links .nav-link:hover::after,
+.nav-links .nav-link.active::after {
+  width: 100%;
+}
+
+/* Keep button position same and style */
+.signin-btn {
+  background-color: white !important;
+  color: #ff4d4d !important;
+  border: none !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.signin-btn:hover {
+  background-color: #ffe6e6 !important;
+  color: #cc0000 !important;
+}
