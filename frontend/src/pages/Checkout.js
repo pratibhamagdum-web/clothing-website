@@ -116,7 +116,7 @@ function CheckoutForm({ cart, totalPrice }) {
       </div>
       <motion.div whileHover={{ scale: 1.05 }}>
         <Button className="mt-3" variant="dark" type="submit" disabled={!stripe}>
-          Pay ${totalPrice.toFixed(2)}
+          Pay ₹{totalPrice.toFixed(2)}
         </Button>
       </motion.div>
       {status && <p className="mt-3">{status}</p>}
