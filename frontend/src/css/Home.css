@@ -144,3 +144,137 @@ body {
   margin: 10px auto 0;
   border-radius: 2px;
 }
+/* 🌈 Vision / Our Story Section */
+.vision-section {
+  position: relative;
+  background: linear-gradient(135deg, #ff5e62, #ff9966);
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+.vision-section .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.vision-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.vision-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.vision-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.vision-card h5 {
+  font-weight: 600;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.vision-card p {
+  color: #fce4ec;
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+/* Floating decorative circles */
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  animation: float 8s ease-in-out infinite;
+}
+
+.circle1 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  left: 10%;
+}
+
+.circle2 {
+  width: 80px;
+  height: 80px;
+  bottom: 15%;
+  right: 15%;
+}
+
+.circle3 {
+  width: 60px;
+  height: 60px;
+  top: 30%;
+  right: 25%;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Section heading animation */
+.section-heading {
+  font-weight: 700;
+  color: #4d2c50ff;
+  position: relative;
+  display: inline-block;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #ff5e62;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* Gallery styling */
+.cloud-shape img {
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.cloud-shape img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-caption {
+  margin-top: 10px;
+  color: #4d2c50ff;
+  font-weight: 500;
+}
+
+.image-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+/* ✅ Center align only "Our Lovely Gallery" & "Featured Products" */
+.section-heading.gallery-title,
+.section-heading.featured-title {
+  display: block;
+  text-align: center;
+  margin: 0 auto 20px;
+  width: fit-content;
+}
