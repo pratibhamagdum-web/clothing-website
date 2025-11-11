@@ -11,20 +11,24 @@ export default function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${process.env.react_app_api_url}
-/api/auth/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
-    const data = await res.json();
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+      const data = await res.json();
 
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("isAdmin", data.isAdmin); // ✅ Correct key
-      navigate("/");
-    } else {
-      alert(data.message || "Registration failed");
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("isAdmin", data.isAdmin);
+        navigate("/");
+      } else {
+        alert(data.message || "Registration failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong!");
     }
   };
 

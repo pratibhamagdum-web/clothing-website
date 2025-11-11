@@ -4,7 +4,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { motion } from "framer-motion";
 
-const stripePromise = loadStripe("pk_test_51RseLoL5gxPl55443640z3QOjKfT5SogQ9ko4PgTHEMNWK6P1gBenx4u2r0OyH0JS7pwnTXUkeBoU19VVKJPqIjE00gOfToYQg");
+const stripePromise = loadStripe(
+  "pk_test_51RseLoL5gxPl55443640z3QOjKfT5SogQ9ko4PgTHEMNWK6P1gBenx4u2r0OyH0JS7pwnTXUkeBoU19VVKJPqIjE00gOfToYQg"
+);
 
 function CheckoutForm({ cart, totalPrice }) {
   const stripe = useStripe();
@@ -26,9 +28,7 @@ function CheckoutForm({ cart, totalPrice }) {
     setStatus("Processing...");
 
     try {
-      // 1️⃣ Create Stripe Payment
-      const res = await fetch(`${process.env.react_app_api_url}
-api/payment/create`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/payment/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: totalPrice * 100 }),
@@ -41,7 +41,6 @@ api/payment/create`, {
         payment_method: { card: elements.getElement(CardElement) },
       });
 
-      // 2️⃣ On Success → Save Order
       if (result.error) {
         setStatus(`Error: ${result.error.message}`);
       } else if (result.paymentIntent.status === "succeeded") {
@@ -56,15 +55,12 @@ api/payment/create`, {
 
   const placeOrder = async () => {
     const token = localStorage.getItem("token");
-    console.log("📦 Placing order...", cart, address, token);
-
     if (!token) {
       setStatus("Please login to place order");
       return;
     }
 
-    const res = await fetch(`${process.env.react_app_api_url}
-/api/orders`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -11,8 +11,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${process.env.react_app_api_url}
-/api/auth/login`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -22,9 +21,9 @@ export default function Login() {
 
       if (data.token) {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("isAdmin", data.isAdmin); // store admin flag
-        navigate("/profile"); // redirect to profile after login
-        window.location.reload(); // refresh to update navbar
+        localStorage.setItem("isAdmin", data.isAdmin);
+        navigate("/profile");
+        window.location.reload();
       } else {
         alert(data.message || "Login failed");
       }
@@ -35,7 +34,10 @@ export default function Login() {
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center" style={{ height: "80vh" }}>
+    <Container
+      className="d-flex justify-content-center align-items-center"
+      style={{ height: "80vh" }}
+    >
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
         <Card className="p-4 shadow" style={{ width: "350px" }}>
           <h3 className="text-center mb-3">Sign In</h3>
@@ -58,7 +60,9 @@ export default function Login() {
                 required
               />
             </Form.Group>
-            <Button type="submit" variant="dark" className="w-100">Login</Button>
+            <Button type="submit" variant="dark" className="w-100">
+              Login
+            </Button>
           </Form>
           <p className="text-center mt-3">
             Don’t have an account? <a href="/register">Register</a>

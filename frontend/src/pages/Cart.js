@@ -31,12 +31,7 @@ export default function Cart() {
         >
           <h4>Your cart is empty</h4>
           <p className="text-muted">Looks like you haven’t added anything yet.</p>
-          <Button
-            variant="dark"
-        
-            className="mt-3"
-            onClick={() => navigate("/shop")}
-          >
+          <Button variant="dark" className="mt-3" onClick={() => navigate("/shop")}>
             Continue Shopping
           </Button>
         </motion.div>
@@ -61,11 +56,7 @@ export default function Cart() {
                   <td>{item.name}</td>
                   <td>₹{item.price}</td>
                   <td>
-                    <Button
-                      variant="danger"
-                      size="sm"
-                      onClick={() => removeFromCart(i)}
-                    >
+                    <Button variant="danger" size="sm" onClick={() => removeFromCart(i)}>
                       Remove
                     </Button>
                   </td>
@@ -74,11 +65,7 @@ export default function Cart() {
             </tbody>
           </Table>
           <h5 className="fw-bold">Total: ₹{totalPrice}</h5>
-          <Button
-            className="mt-3"
-            onClick={() => navigate("/checkout")}
-            variant="success"
-          >
+          <Button className="mt-3" onClick={() => navigate("/checkout")} variant="success">
             Proceed to Checkout
           </Button>
         </>

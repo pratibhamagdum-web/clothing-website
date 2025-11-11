@@ -17,8 +17,7 @@ export default function Profile() {
 
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`${process.env.react_app_api_url}
-/api/users/profile`, {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/users/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -36,6 +35,7 @@ export default function Profile() {
       }
     };
     fetchProfile();
+    // eslint-disable-next-line
   }, [token, navigate]);
 
   if (loading) return <Spinner animation="border" className="mt-4" />;
@@ -46,9 +46,17 @@ export default function Profile() {
     <Container className="mt-4">
       <h2>My Profile</h2>
       <Card className="p-3 mt-3">
-        <p><strong>Name:</strong> {user.name}</p>
-        <p><strong>Email:</strong> {user.email}</p>
-        {user.isAdmin && <p><strong>Role:</strong> Admin</p>}
+        <p>
+          <strong>Name:</strong> {user.name}
+        </p>
+        <p>
+          <strong>Email:</strong> {user.email}
+        </p>
+        {user.isAdmin && (
+          <p>
+            <strong>Role:</strong> Admin
+          </p>
+        )}
       </Card>
     </Container>
   );

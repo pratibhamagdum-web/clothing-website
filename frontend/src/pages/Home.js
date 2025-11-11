@@ -11,20 +11,23 @@ export default function HomePage() {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
 
-    fetch(`${process.env.react_app_api_url}
-/api/products`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
+        const data = await res.json();
+
         if (Array.isArray(data)) setProducts(data);
         else if (Array.isArray(data.products)) setProducts(data.products);
         else setProducts([]);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
+      } catch (err) {
+        console.error("Error fetching products:", err);
         setProducts([]);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   return (
@@ -73,10 +76,7 @@ export default function HomePage() {
 
       {/* ☁️ Our Lovely Gallery */}
       <section className="container my-5">
-        <h2
-          className="section-heading gallery-title"
-          data-aos="fade-up"
-        >
+        <h2 className="section-heading gallery-title" data-aos="fade-up">
           Our Lovely Gallery
         </h2>
         <p
@@ -87,11 +87,7 @@ export default function HomePage() {
           A collection of our favorite looks — soft, stylish, and picture-perfect.
         </p>
 
-        <div
-          className="image-grid"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
+        <div className="image-grid" data-aos="fade-up" data-aos-delay="400">
           <div className="grid-item text-center">
             <div className="cloud-shape">
               <img src="/img/flowerdress.jpeg" alt="Summer Floral Dress" />
@@ -153,10 +149,7 @@ export default function HomePage() {
 
       {/* 🛍️ Featured Products */}
       <section className="container my-5">
-        <h2
-          className="section-heading featured-title"
-          data-aos="fade-up"
-        >
+        <h2 className="section-heading featured-title" data-aos="fade-up">
           Featured Products
         </h2>
 
@@ -167,17 +160,13 @@ export default function HomePage() {
         ) : (
           <div className="row">
             {products.slice(0, 4).map((product) => (
-              <div
-                className="col-md-3 mb-4"
-                key={product._id}
-                data-aos="fade-up"
-              >
+              <div className="col-md-3 mb-4" key={product._id} data-aos="fade-up">
                 <div className="card shadow-sm border-0 product-card">
                   <img
                     src={
                       product.image?.startsWith("http")
                         ? product.image
-                        : `/images/${product.image}`
+                        : `${process.env.REACT_APP_API_URL}/uploads/${product.image}`
                     }
                     className="card-img-top"
                     alt={product.name}

@@ -12,7 +12,6 @@ export default function AdminDashboard() {
   return (
     <Container className="mt-5">
       <h2 className="fw-bold text-center mb-4">✨ Admin Dashboard ✨</h2>
-
       <Row className="g-4">
         {/* Manage Products */}
         <Col md={6}>

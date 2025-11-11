@@ -12,8 +12,7 @@ export default function MyOrders() {
 
   const fetchMyOrders = async () => {
     try {
-      const res = await fetch(`${process.env.react_app_api_url}
-/api/orders/myorders`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/myorders`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       const data = await res.json();
@@ -57,11 +56,7 @@ export default function MyOrders() {
           </thead>
           <tbody>
             {orders.map((o) => (
-              <motion.tr
-                key={o._id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
+              <motion.tr key={o._id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <td>{o._id}</td>
                 <td>{o.totalPrice}</td>
                 <td>{o.status}</td>

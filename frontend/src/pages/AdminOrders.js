@@ -12,8 +12,7 @@ export default function AdminOrders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch(`${process.env.react_app_api_url}
-api/orders`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/orders`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -34,8 +33,7 @@ api/orders`, {
 
   const updateStatus = async (id, status) => {
     try {
-      const res = await fetch(`${process.env.react_app_api_url}
-api/orders/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -60,8 +58,7 @@ api/orders/${id}`, {
   const deleteOrder = async (id) => {
     if (!window.confirm("Delete this order?")) return;
     try {
-      const res = await fetch(`${process.env.react_app_api_url}/
-api/orders/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

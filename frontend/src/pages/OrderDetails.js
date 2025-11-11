@@ -10,12 +10,12 @@ export default function OrderDetails() {
 
   useEffect(() => {
     fetchOrder();
+    // eslint-disable-next-line
   }, []);
 
   const fetchOrder = async () => {
     try {
-      const res = await fetch(`${process.env.react_app_api_url}
-/api/orders/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       const data = await res.json();
@@ -41,17 +41,16 @@ export default function OrderDetails() {
 
   return (
     <Container className="mt-5">
-      <motion.h2
-        className="fw-bold text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
+      <motion.h2 className="fw-bold text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         📄 Order Details
       </motion.h2>
 
       <Card className="p-3 mt-4 shadow-sm">
         <h5>Shipping Address</h5>
-        <p>{order.shippingAddress?.address}, {order.shippingAddress?.city}, {order.shippingAddress?.postalCode}, {order.shippingAddress?.country}</p>
+        <p>
+          {order.shippingAddress?.address}, {order.shippingAddress?.city},{" "}
+          {order.shippingAddress?.postalCode}, {order.shippingAddress?.country}
+        </p>
 
         <h5>Payment Method</h5>
         <p>{order.paymentMethod}</p>

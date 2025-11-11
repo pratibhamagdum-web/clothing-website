@@ -5,8 +5,7 @@ export default function ManageOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.react_app_api_url}
-/api/orders`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/orders`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`, // Admin token
       },
@@ -17,8 +16,7 @@ export default function ManageOrders() {
   }, []);
 
   const updateStatus = async (id, status) => {
-    await fetch(`${process.env.react_app_api_url}
-api/orders/${id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -28,14 +26,12 @@ api/orders/${id}`, {
     });
 
     setOrders((prev) =>
-      prev.map((order) =>
-        order._id === id ? { ...order, status } : order
-      )
+      prev.map((order) => (order._id === id ? { ...order, status } : order))
     );
   };
 
   return (
-    <Container>
+    <Container className="mt-4">
       <h3 className="mb-4">Manage Orders</h3>
       <Table striped bordered hover responsive>
         <thead>
@@ -52,7 +48,7 @@ api/orders/${id}`, {
             <tr key={order._id}>
               <td>{order._id}</td>
               <td>{order.user?.name}</td>
-              <td>{order.totalAmount}</td>
+              <td>{order.totalPrice}</td>
               <td>{order.status}</td>
               <td>
                 <Form.Select
