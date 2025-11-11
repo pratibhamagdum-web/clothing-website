@@ -21,7 +21,8 @@ export default function AdminProducts() {
   // Fetch products
   const fetchProducts = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/products");
+      const res = await fetch(`${process.env.react_app_api_url}
+api/products`);
       const data = await res.json();
       setProducts(data);
     } catch (err) {
@@ -47,8 +48,10 @@ export default function AdminProducts() {
 
     try {
       const url = editId
-        ? `http://localhost:5000/api/products/${editId}`
-        : `http://localhost:5000/api/products`;
+        ? `${process.env.react_app_api_url}
+api/products/${editId}`
+        : `${process.env.react_app_api_url}
+api/products`;
       const method = editId ? "PUT" : "POST";
 
       const res = await fetch(url, {
@@ -81,7 +84,8 @@ export default function AdminProducts() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+      const res = await fetch(`${process.env.react_app_api_url}
+api/products/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -121,7 +125,8 @@ export default function AdminProducts() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/products/${productId}/restock`,
+        `${process.env.react_app_api_url}
+api/products/${productId}/restock`,
         {
           method: "PUT",
           headers: {

@@ -27,7 +27,8 @@ function CheckoutForm({ cart, totalPrice }) {
 
     try {
       // 1️⃣ Create Stripe Payment
-      const res = await fetch("http://localhost:5000/api/payment/create", {
+      const res = await fetch(`${process.env.react_app_api_url}
+api/payment/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: totalPrice * 100 }),
@@ -62,7 +63,8 @@ function CheckoutForm({ cart, totalPrice }) {
       return;
     }
 
-    const res = await fetch("http://localhost:5000/api/orders", {
+    const res = await fetch(`${process.env.react_app_api_url}
+api/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

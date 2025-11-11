@@ -11,7 +11,8 @@ export default function HomePage() {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
 
-    fetch("http://localhost:5000/api/products")
+    fetch(`${process.env.react_app_api_url}
+api/products`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) setProducts(data);

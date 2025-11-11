@@ -9,7 +9,8 @@ export default function ProductDetail() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/${id}`)
+    fetch(`${process.env.react_app_api_url}
+api/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch((err) => console.error(err));
@@ -45,7 +46,8 @@ export default function ProductDetail() {
   src={
     product.image?.startsWith("http")
       ? product.image
-      : `http://localhost:5000/uploads/${product.image}`
+      : `${process.env.react_app_api_url}
+uploads/${product.image}`
   }
   alt={product.name}
   style={{

@@ -12,7 +12,8 @@ export default function AdminOrders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/orders", {
+      const res = await fetch(`${process.env.react_app_api_url}
+api/orders`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -33,7 +34,8 @@ export default function AdminOrders() {
 
   const updateStatus = async (id, status) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${id}`, {
+      const res = await fetch(`${process.env.react_app_api_url}
+api/orders/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +60,8 @@ export default function AdminOrders() {
   const deleteOrder = async (id) => {
     if (!window.confirm("Delete this order?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${id}`, {
+      const res = await fetch(`${process.env.react_app_api_url}
+api/orders/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -5,7 +5,8 @@ export default function ManageOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/orders", {
+    fetch(`${process.env.react_app_api_url}
+api/orders`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`, // Admin token
       },
@@ -16,7 +17,8 @@ export default function ManageOrders() {
   }, []);
 
   const updateStatus = async (id, status) => {
-    await fetch(`http://localhost:5000/api/orders/${id}`, {
+    await fetch(`${process.env.react_app_api_url}
+api/orders/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

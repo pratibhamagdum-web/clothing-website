@@ -19,7 +19,8 @@ export default function Shop() {
 
   // 🔹 Fetch Products
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch(`${process.env.react_app_api_url}
+api/products`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -60,7 +61,8 @@ export default function Shop() {
     try {
       // 🔹 Reduce stock in backend
       const response = await fetch(
-        `http://localhost:5000/api/products/${product._id}/reduce-stock`,
+        `${process.env.react_app_api_url}
+api/products/${product._id}/reduce-stock`,
         { method: "PUT" }
       );
 

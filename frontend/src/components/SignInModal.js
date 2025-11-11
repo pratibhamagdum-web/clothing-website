@@ -8,7 +8,8 @@ export default function SignInModal({ show, handleClose, setIsLoggedIn }) {
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleLogin = async () => {
-    const res = await fetch("http://localhost:5000/api/auth/login", {
+    const res = await fetch("${process.env.react_app_api_url}
+api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: formData.email, password: formData.password }),
@@ -24,7 +25,8 @@ export default function SignInModal({ show, handleClose, setIsLoggedIn }) {
   };
 
   const handleRegister = async () => {
-    const res = await fetch("http://localhost:5000/api/auth/register", {
+    const res = await fetch("${process.env.react_app_api_url}
+api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
