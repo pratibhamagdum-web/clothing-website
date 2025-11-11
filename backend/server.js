@@ -17,7 +17,9 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "*" // Only allow your frontend URL
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,10 +35,9 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/users", userRoutes);
 
-// 👉 Add these lines to serve React build
+// ✅ Optional: Serve frontend if backend also serves React
 const frontendPath = path.resolve(__dirname, "../frontend/build");
 app.use(express.static(frontendPath));
-
 app.get("*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
