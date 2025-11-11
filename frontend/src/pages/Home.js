@@ -12,7 +12,7 @@ export default function HomePage() {
     AOS.init({ duration: 1000, once: true });
 
     fetch(`${process.env.react_app_api_url}
-api/products`)
+/api/products`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) setProducts(data);

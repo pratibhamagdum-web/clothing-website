@@ -20,7 +20,7 @@ export default function Shop() {
   // 🔹 Fetch Products
   useEffect(() => {
     fetch(`${process.env.react_app_api_url}
-api/products`)
+/api/products`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

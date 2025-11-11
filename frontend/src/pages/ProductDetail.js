@@ -10,7 +10,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     fetch(`${process.env.react_app_api_url}
-api/products/${id}`)
+/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch((err) => console.error(err));

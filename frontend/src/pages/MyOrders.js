@@ -13,7 +13,7 @@ export default function MyOrders() {
   const fetchMyOrders = async () => {
     try {
       const res = await fetch(`${process.env.react_app_api_url}
-api/orders/myorders`, {
+/api/orders/myorders`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       const data = await res.json();

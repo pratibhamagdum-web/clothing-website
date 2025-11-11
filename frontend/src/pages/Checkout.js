@@ -64,7 +64,7 @@ api/payment/create`, {
     }
 
     const res = await fetch(`${process.env.react_app_api_url}
-api/orders`, {
+/api/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

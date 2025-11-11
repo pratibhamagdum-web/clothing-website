@@ -126,7 +126,7 @@ api/products/${id}`, {
     try {
       const res = await fetch(
         `${process.env.react_app_api_url}
-api/products/${productId}/restock`,
+/api/products/${productId}/restock`,
         {
           method: "PUT",
           headers: {

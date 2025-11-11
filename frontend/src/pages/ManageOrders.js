@@ -6,7 +6,7 @@ export default function ManageOrders() {
 
   useEffect(() => {
     fetch(`${process.env.react_app_api_url}
-api/orders`, {
+/api/orders`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`, // Admin token
       },

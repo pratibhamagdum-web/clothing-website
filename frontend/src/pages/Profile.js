@@ -18,7 +18,7 @@ export default function Profile() {
     const fetchProfile = async () => {
       try {
         const res = await fetch(`${process.env.react_app_api_url}
-api/users/profile`, {
+/api/users/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

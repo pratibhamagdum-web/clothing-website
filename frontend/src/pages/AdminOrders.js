@@ -60,7 +60,7 @@ api/orders/${id}`, {
   const deleteOrder = async (id) => {
     if (!window.confirm("Delete this order?")) return;
     try {
-      const res = await fetch(`${process.env.react_app_api_url}
+      const res = await fetch(`${process.env.react_app_api_url}/
 api/orders/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
